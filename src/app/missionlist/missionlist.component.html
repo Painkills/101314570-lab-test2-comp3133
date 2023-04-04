@@ -1,0 +1,29 @@
+<!-- Missions -->
+<div>
+  <h2>Mission List</h2>
+  <p>See the List of past missions here:</p>
+  <div>
+    <div style="border: black 1px; padding: 15px; margin: 15px; width: 400px;">
+      <label style="font-weight: bolder; padding: 15px;" for="search-text">Filter Missions:</label>
+      <input type="email" class="form-control" id="search-text" aria-describedby="search-text" 
+        [(ngModel)]="searchText" placeholder="Enter text to search" 
+        autofocus>
+    </div>
+    <div>
+      <div class="card-container" *ngFor="let mission of launchList | appFilter: searchText">
+      
+        <a class="card" [routerLink]="['/mission-details', mission.flight_number]" routerLinkActive="active" ariaCurrentWhenActive="page">
+          <img width="60" src={{mission.links.mission_patch_small}}>
+          <div>
+            <h3>{{mission.mission_name}}</h3>
+            <div>{{mission.launch_year}}</div>
+          </div>
+          <div>{{mission.details}}</div>
+        </a>
+      
+      </div>
+    </div>
+</div>
+
+  
+
